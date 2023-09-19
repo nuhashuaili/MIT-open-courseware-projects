@@ -1,8 +1,10 @@
-The first problem set was to calculate the 
+This problem set's task was to calculate the 
 number of months to save for a house given
 a salary and a savings percentage of the salary. 
+
 Part A was just a basic salary and savings.
 Part B included a semi annual raise.
 Part C (incomplete) the user was to give the salary,
+
 an investment return, a downpayment and the cost of the house.
 For this task, we were asked to find the percent savings in order to pay for the house in 36 months.
