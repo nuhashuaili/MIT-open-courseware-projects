@@ -17,6 +17,7 @@ down_payment = total_cost/4
 current_savings = 0
 total_money = 0
 portion_saved = 0.5 # for the bisection search
+investment = 0
 steps = 0
 
 def bisection(steps, portion_saved, down_payment, total_savings)
@@ -45,8 +46,12 @@ total_savings=0 #to calculate the annual salary with the semi annual raise
 
 for months in range(36):
 
-    if ((months -1)%6)==0 and months != 0:    #factoring in the semi annual raise, subtracted one from the month so that the raise will be added to the month after the 6th 12th etc
+    if ((months + 1) % 6) == 0 and months != 0:    #factoring in the semi annual raise, subtracted one from the month so that the raise will be added to the month after the 6th 12th etc
         monthly_salary = monthly_salary + (semi_annual_raise * monthly_salary )
+
+    if ((months + 1) % 12) == 0 and months != 0:   #factoring in annual savings
+        investment = investment + (total_savings * r)
+        total_savings += investment
             
     total_savings += monthly_salary
 
@@ -55,6 +60,7 @@ for months in range(36):
 while abs(down_payment - (total_savings*portion_saved))>100:   # factorizing in the $100 descrepancy allowed
     
     bisection(steps, portion_saved, down_payment, total_savings)
+
 
 
      
