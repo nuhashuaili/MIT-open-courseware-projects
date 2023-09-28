@@ -15,29 +15,30 @@ r = 0.04
 total_cost = 1000000
 down_payment = total_cost/4
 current_savings = 0
-total_money = 0
-portion_saved = 0.5 # for the bisection search
 investment = 0
 steps = 0
 
-def bisection(steps, portion_saved, down_payment, total_savings)
+
+def bisection(steps, portion_saved, down_payment, current_savings, high, low):
     """ conducts a bisection search
     inputs: steps, portion_saved, down_payment, total_savings 
     returns: portion_saved, steps"""
         
-    low = 0
-    high = 1
 
-    if (total_savings * portion_saved) < down_payment:
+    if (current_savings * portion_saved) < down_payment:
         low = portion_saved
 
-    elif (total_savings * portion_saved) > down_payment:
+    elif (current_savings * portion_saved) > down_payment:
         high = portion_saved
     
     portion_saved = (high + low) / 2 
     
     steps += 1
-return portion_saved, steps
+    print(portion_saved)
+    print(high)
+    print(low)
+    
+    return portion_saved, steps, high, low
 
 
 # total savings
@@ -52,18 +53,29 @@ for months in range(36):
     if ((months + 1) % 12) == 0 and months != 0:   #factoring in annual savings
         investment = investment + (total_savings * r)
         total_savings += investment
-            
+        
+
     total_savings += monthly_salary
 
-    
-    
-while abs(down_payment - (total_savings*portion_saved))>100:   # factorizing in the $100 descrepancy allowed
-    
-    bisection(steps, portion_saved, down_payment, total_savings)
+print("Total Savings: {}".format(total_savings))
 
+i = 0   
+while abs(down_payment - current_savings) > 100 and i < 10000:   # factorizing in the $100 descrepancy allowed
+    
+    low = 0
+    high = 1
+    portion_saved = 0.5 # for the bisection search   
 
+    bisection(steps, portion_saved, down_payment, current_savings, high, low)
+    
+    current_savings = total_savings * portion_saved
 
-     
+    i += 1
+
+    
+else: 
+        print("Best Savings Rate: {} \nBisection Steps: {}".format(portion_saved, steps))
+
 
 
 
