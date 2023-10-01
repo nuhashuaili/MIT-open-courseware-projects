@@ -5,6 +5,13 @@ a salary and a savings percentage of the salary.
 Part A was just a basic salary and savings.
 Part B included a semi annual raise.
 Part C (incomplete) the user was to give the salary,
-
 an investment return, a downpayment and the cost of the house.
-For this task, we were asked to find the percent savings in order to pay for the house in 36 months.
+For this task, we were asked to find the percent savings in order 
+to pay for the house in 36 months.
+this code puts me in a continuous loop 
+so I added the i variable to avoid it 
+and i still cannot seem to figure out how
+ to make the bisection search work
+I will stop here for now but will go back 
+to it once i figure how to fix the problem.
+
